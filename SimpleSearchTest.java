@@ -1,6 +1,7 @@
 package org.fasttrackit.search;
 
 import org.fasttrackit.AppConfig;
+import org.fasttrackit.TestBase;
 import org.fasttrackit.webviews.Header;
 import org.fasttrackit.webviews.ProductsGrid;
 import org.junit.Test;
@@ -16,15 +17,11 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class SimpleSearchTest {
+public class SimpleSearchTest extends TestBase{
 
     @Test
     public void SimpleSearchWithOneKeyword() {
-        System.setProperty("webdriver.chrome.driver",
-                AppConfig.getChromeDriverPath());
-        WebDriver driver = new ChromeDriver();
 
-        driver.get(AppConfig.getSiteUrl());
         String keyword= "vase";
         driver.findElement(By.tagName("input")).sendKeys(keyword+ Keys.ENTER);
         System.out.println("Pressed Enter in search field");
@@ -39,9 +36,7 @@ public class SimpleSearchTest {
 
     @Test
     public void SpecialPriceDisplayAfterSimpleSearch() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Nelu\\Desktop\\drivere\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.get(AppConfig.getSiteUrl());
+
         String keyword = "vase";
         Header header = PageFactory.initElements(driver, Header.class);
         header.search(keyword);
@@ -56,4 +51,5 @@ public class SimpleSearchTest {
 
 
         }
+
     }}
