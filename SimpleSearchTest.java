@@ -5,6 +5,8 @@ import org.fasttrackit.TestBase;
 import org.fasttrackit.webviews.Header;
 import org.fasttrackit.webviews.ProductsGrid;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -12,12 +14,29 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+@RunWith(Parameterized.class)
+
+
+
+
 public class SimpleSearchTest extends TestBase{
+
+    private String keyword;
+    public SimpleSearchTest(String keyword){
+        this.keyword= keyword;
+
+
+    }
+    @Parameterized.Parameters
+    public static List<String> inputData(){
+        return Arrays.asList("vase", "camera");
+    }
 
     @Test
     public void SimpleSearchWithOneKeyword() {
