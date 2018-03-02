@@ -57,9 +57,9 @@ public class SimpleSearchTest extends TestBase{
     public void SpecialPriceDisplayAfterSimpleSearch() {
 
         String keyword = "vase";
-        Header header = PageFactory.initElements(driver, Header.class);
+        Header header = initElemets(Header.class);
         header.search(keyword);
-        ProductsGrid productsGrid = PageFactory.initElements(driver, ProductsGrid.class);
+        ProductsGrid productsGrid = initElemets(ProductsGrid.class);
 
         System.out.println("stored" + productsGrid.getProductNames().size() + "product names from search results");
 
